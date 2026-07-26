@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课堂复习材料 · 闪卡</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap');
+  body { font-family: 'Noto Sans SC', sans-serif; background: #f0ebe4; }
+
+  /* ---- flip card ---- */
+  .flip-card {
+    perspective: 900px;
+    cursor: pointer;
+    min-height: 110px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 110px;
+    transition: transform 0.55s cubic-bezier(.4,0,.2,1);
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+    text-align: center;
+  }
+  .flip-card-front {
+    background: #fff;
+    border: 2px solid #e8e1d8;
+  }
+  .flip-card-back {
+    background: linear-gradient(135deg, #c0392b 0%, #e07b39 100%);
+    color: #fff;
+    transform: rotateY(180deg);
+  }
+
+  /* sentence cards */
+  .flip-card-sentence { min-height: 130px; }
+  .flip-card-sentence .flip-card-inner { min-height: 130px; }
+  .flip-card-sentence .flip-card-front,
+  .flip-card-sentence .flip-card-back { min-height: 130px; }
+  .flip-card-sentence .flip-card-front { border-left: 5px solid #e07b39; }
+  .flip-card-sentence.question .flip-card-front { border-left: 5px solid #4a6fa5; }
+
+  .pinyin { font-size: 0.68rem; color: #e07b39; letter-spacing: 0.04em; margin-bottom: 2px; }
+  .hanzi  { font-size: 1.2rem; font-weight: 700; color: #2d2d2d; }
+  .hint   { font-size: 0.6rem; color: #bbb; margin-top: 6px; }
+  .ru-text { font-size: 0.92rem; font-weight: 500; line-height: 1.45; }
+  .pinyin-back { font-size: 0.65rem; opacity: 0.75; margin-bottom: 4px; }
+
+  .section-title {
+    background: linear-gradient(135deg, #c0392b, #e07b39);
+    color: white;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  /* grammar cards */
+  .grammar-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border-left: 5px solid #27ae60;
+  }
+</style>
+</head>
+<body class="py-8 px-4">
+<div class="max-w-3xl mx-auto">
+
+  <!-- 标题 -->
+  <div class="text-center mb-8">
+    <div class="text-3xl font-bold text-red-700 mb-1">📚 课堂复习材料</div>
+    <div class="text-gray-500 text-sm">Учебные материалы для повторения · 2026.07.23</div>
+    <div class="mt-3 inline-block bg-amber-50 border border-amber-200 text-amber-700 text-xs px-4 py-1.5 rounded-full">
+      👆 Нажми на карточку — увидишь перевод！/ 点击卡片查看翻译
+    </div>
+  </div>
+
+  <!-- ① 称谓 -->
+  <div class="mb-8">
+    <div class="section-title">① 称谓 · Обращения и родственники</div>
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">lǎo shī</div><div class="hanzi">老师</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">lǎo shī</div><div class="ru-text">учитель / преподаватель</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">tóng xué</div><div class="hanzi">同学</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">tóng xué</div><div class="ru-text">одноклассник / однокурсник</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">tóng shì</div><div class="hanzi">同事</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">tóng shì</div><div class="ru-text">коллега</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">nán péng you</div><div class="hanzi">男朋友</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">nán péng you</div><div class="ru-text">парень / бойфренд</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">nǚ péng you</div><div class="hanzi">女朋友</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">nǚ péng you</div><div class="ru-text">девушка / подруга</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">mā ma</div><div class="hanzi">妈妈</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">mā ma</div><div class="ru-text">мама</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">lǎo ye</div><div class="hanzi">姥爷</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">lǎo ye</div><div class="ru-text">дедушка (по маме)</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">jiě jie</div><div class="hanzi">姐姐</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">jiě jie</div><div class="ru-text">старшая сестра</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">mèi mei</div><div class="hanzi">妹妹</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">mèi mei</div><div class="ru-text">младшая сестра</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">gē ge</div><div class="hanzi">哥哥</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">gē ge</div><div class="ru-text">старший брат</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">dì di</div><div class="hanzi">弟弟</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">dì di</div><div class="ru-text">младший брат</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">xiōng dì jiě mèi</div><div class="hanzi">兄弟姐妹</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">xiōng dì jiě mèi</div><div class="ru-text">братья и сёстры</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ② 国籍 -->
+  <div class="mb-8">
+    <div class="section-title">② 国籍 · Гражданство и национальность</div>
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">nǎ guó rén</div><div class="hanzi">哪国人</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">nǎ guó rén</div><div class="ru-text">гражданин какой страны?</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">é luó sī rén</div><div class="hanzi">俄罗斯人</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">é luó sī rén</div><div class="ru-text">русский / россиянин</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">tài guó rén</div><div class="hanzi">泰国人</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">tài guó rén</div><div class="ru-text">таец / таиландец</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">zhōng guó rén</div><div class="hanzi">中国人</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">zhōng guó rén</div><div class="ru-text">китаец</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ③ 常用词汇 -->
+  <div class="mb-8">
+    <div class="section-title">③ 常用词汇 · Общая лексика</div>
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">hàn yǔ / zhōng wén</div><div class="hanzi">汉语 / 中文</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text">китайский язык</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">gōng zuò</div><div class="hanzi">工作</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">gōng zuò</div><div class="ru-text">работа / работать</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">máng</div><div class="hanzi">忙</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">máng</div><div class="ru-text">занятой / занят</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">xué xi</div><div class="hanzi">学习</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">xué xi</div><div class="ru-text">учиться / учёба</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">bó wù guǎn</div><div class="hanzi">博物馆</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">bó wù guǎn</div><div class="ru-text">музей</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">kā fēi</div><div class="hanzi">咖啡</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">kā fēi</div><div class="ru-text">кофе</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">xià yǔ le</div><div class="hanzi">下雨了 ☔</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">xià yǔ le</div><div class="ru-text">пошёл дождь</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">mò sī kē</div><div class="hanzi">莫斯科</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">mò sī kē</div><div class="ru-text">Москва</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">zhōng guó</div><div class="hanzi">中国</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">zhōng guó</div><div class="ru-text">Китай</div></div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">shǔ hǔ</div><div class="hanzi">属虎</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">shǔ hǔ</div><div class="ru-text">год Тигра (по гороскопу)</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ④ 数字 -->
+  <div class="mb-8">
+    <div class="section-title">④ 数字 · Числа</div>
+    <div class="grid grid-cols-3 gap-3 sm:grid-cols-5">
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">shí liù</div><div class="hanzi">十六</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text" style="font-size:1.6rem;font-weight:700">16</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">liù shí</div><div class="hanzi">六十</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text" style="font-size:1.6rem;font-weight:700">60</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">yī bǎi</div><div class="hanzi">一百</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text" style="font-size:1.6rem;font-weight:700">100</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">yī qiān</div><div class="hanzi">一千</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text" style="font-size:1.6rem;font-weight:700">1 000</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">yī wàn</div><div class="hanzi">一万</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text" style="font-size:1.3rem;font-weight:700">10 000</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">yī gè</div><div class="hanzi">一个</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text">один (счётное слово)</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">liǎng gè</div><div class="hanzi">两个</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text">два (счётное слово)</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">èr shí gè</div><div class="hanzi">二十个</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text">двадцать штук</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">bā yuè</div><div class="hanzi">八月</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="ru-text">август</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⑤ 动词 -->
+  <div class="mb-8">
+    <div class="section-title">⑤ 常用动词 · Основные глаголы</div>
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">shì</div><div class="hanzi">是</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">shì</div><div class="ru-text">быть / являться (есть)</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">yǒu</div><div class="hanzi">有</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">yǒu</div><div class="ru-text">иметь / есть (у кого-то)</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">méi yǒu</div><div class="hanzi">没有</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">méi yǒu</div><div class="ru-text">нет / не иметь</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">jiào</div><div class="hanzi">叫</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">jiào</div><div class="ru-text">звать (меня зовут…)</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">zhù zài</div><div class="hanzi">住在</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">zhù zài</div><div class="ru-text">жить (в …)</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">qù</div><div class="hanzi">去</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">qù</div><div class="ru-text">идти / ехать / поехать</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">xiǎng</div><div class="hanzi">想</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">xiǎng</div><div class="ru-text">хотеть / скучать</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">yào</div><div class="hanzi">要</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">yào</div><div class="ru-text">хотеть / собираться</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">xǐ huān</div><div class="hanzi">喜欢</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">xǐ huān</div><div class="ru-text">нравиться / любить</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">hē</div><div class="hanzi">喝</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">hē</div><div class="ru-text">пить</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">chī</div><div class="hanzi">吃</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">chī</div><div class="ru-text">есть (кушать)</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⑥ 副词 -->
+  <div class="mb-8">
+    <div class="section-title">⑥ 副词 · Наречия и частицы</div>
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">hěn</div><div class="hanzi">很</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">hěn</div><div class="ru-text">очень</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">yě</div><div class="hanzi">也</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">yě</div><div class="ru-text">тоже</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">duì</div><div class="hanzi">对</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">duì</div><div class="ru-text">правильно / да</div></div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front"><div class="pinyin">bù tài</div><div class="hanzi">不太</div><div class="hint">点击翻转</div></div>
+          <div class="flip-card-back"><div class="pinyin-back">bù tài</div><div class="ru-text">не очень</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⑦ 常用句子 -->
+  <div class="mb-8">
+    <div class="section-title">⑦ 常用句子 · Типовые фразы</div>
+    <div class="flex flex-col gap-3">
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">nǐ hǎo！wǒ jiào ……</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">你好！我叫……</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Здравствуйте! Меня зовут…</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">wǒ shì é luó sī rén，wǒ zhù zài mò sī kē。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">我是俄罗斯人，我住在莫斯科。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Я россиянин(-ка), я живу в Москве.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">wǒ shí liù suì，wǒ shǔ hǔ。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">我十六岁，我属虎。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Мне шестнадцать лет, я по знаку Тигр.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">zhè shì wǒ mā ma，tā zài bó wù guǎn gōng zuò。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">这是我妈妈，她在博物馆工作。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Это моя мама, она работает в музее.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">wǒ xǐ huān hē kā fēi，wǒ mā ma yě xǐ huān kā fēi。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">我喜欢喝咖啡，我妈妈也喜欢咖啡。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Я люблю пить кофе, моя мама тоже любит кофе.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">wǒ hěn xiǎng nǐ men。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">我很想你们。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Я очень по вам скучаю.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">wǒ hěn xiǎng wǒ mā ma。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">我很想我妈妈。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Я очень скучаю по маме.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">wáng yī fēi shì wǒ de hàn yǔ lǎo shī。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">王一飞是我的汉语老师。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Ван Ифэй — мой учитель китайского языка.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">tā hàn yǔ hěn hǎo。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">她汉语很好。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Её китайский очень хороший.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">tā de nǚ péng you yě shì tài guó rén。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">他的女朋友也是泰国人。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">Его девушка тоже таиландка.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">tā yǒu èr shí gè xué shēng。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">她有二十个学生。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">У неё двадцать учеников.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #e07b39;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#e07b39;margin-bottom:3px">wǒ bā yuè yào qù zhōng guó xué xí hàn yǔ。</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">我八月要去中国学习汉语。</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="align-items:flex-start;text-align:left">
+            <div class="ru-text">В августе я собираюсь поехать в Китай учить китайский язык.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⑧ 疑问句 -->
+  <div class="mb-8">
+    <div class="section-title">⑧ 疑问句 · Вопросительные предложения</div>
+    <div class="flex flex-col gap-3">
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #4a6fa5;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#4a6fa5;margin-bottom:3px">zhè shì shuí？ / tā shì shuí？</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">这是谁？/ 他是谁？</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="background:linear-gradient(135deg,#2c5282,#4a6fa5);align-items:flex-start;text-align:left">
+            <div class="ru-text">Кто это? / Кто он?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #4a6fa5;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#4a6fa5;margin-bottom:3px">nǐ shì nǎ guó rén？</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">你是哪国人？</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="background:linear-gradient(135deg,#2c5282,#4a6fa5);align-items:flex-start;text-align:left">
+            <div class="ru-text">Ты из какой страны? (Ты кто по национальности?)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #4a6fa5;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#4a6fa5;margin-bottom:3px">nǐ duō shǎo suì？</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">你多少岁？</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="background:linear-gradient(135deg,#2c5282,#4a6fa5);align-items:flex-start;text-align:left">
+            <div class="ru-text">Сколько тебе лет?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #4a6fa5;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#4a6fa5;margin-bottom:3px">nǐ gōng zuò hěn máng ma？</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">你工作很忙吗？</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="background:linear-gradient(135deg,#2c5282,#4a6fa5);align-items:flex-start;text-align:left">
+            <div class="ru-text">Ты очень занят на работе?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #4a6fa5;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#4a6fa5;margin-bottom:3px">nǐ shì bù shì é luó sī rén？</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">你是不是俄罗斯人？<span style="background:#e07b39;color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:4px;margin-left:4px">= 你是俄罗斯人吗？</span></div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="background:linear-gradient(135deg,#2c5282,#4a6fa5);align-items:flex-start;text-align:left">
+            <div class="ru-text">Ты россиянин(-ка) или нет?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #4a6fa5;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#4a6fa5;margin-bottom:3px">nǐ shì tā de zhōng wén lǎo shī ma？</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">你是他的中文老师吗？</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="background:linear-gradient(135deg,#2c5282,#4a6fa5);align-items:flex-start;text-align:left">
+            <div class="ru-text">Ты его учитель китайского языка?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #4a6fa5;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#4a6fa5;margin-bottom:3px">nǐ yǒu jiě jie ma？</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">你有姐姐吗？<span style="background:#e07b39;color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:4px;margin-left:4px">= 你有没有姐姐？</span></div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="background:linear-gradient(135deg,#2c5282,#4a6fa5);align-items:flex-start;text-align:left">
+            <div class="ru-text">У тебя есть старшая сестра?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #4a6fa5;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#4a6fa5;margin-bottom:3px">nǐ yào chī shén me？/ nǐ xiǎng chī shén me？</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">你要吃什么？/ 你想吃什么？</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="background:linear-gradient(135deg,#2c5282,#4a6fa5);align-items:flex-start;text-align:left">
+            <div class="ru-text">Что ты хочешь есть?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card flip-card-sentence" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-left:5px solid #4a6fa5;align-items:flex-start">
+            <div style="font-size:0.65rem;color:#4a6fa5;margin-bottom:3px">xià yǔ le ma？</div>
+            <div style="font-size:1.05rem;font-weight:700;color:#2d2d2d">下雨了？☔</div>
+            <div style="font-size:0.6rem;color:#bbb;margin-top:6px">点击查看俄语翻译</div>
+          </div>
+          <div class="flip-card-back" style="background:linear-gradient(135deg,#2c5282,#4a6fa5);align-items:flex-start;text-align:left">
+            <div class="ru-text">Идёт дождь?</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⑨ 语法点 -->
+  <div class="mb-8">
+    <div class="section-title">⑨ 语法要点 · Ключевые грамматические конструкции</div>
+    <div class="flex flex-col gap-3">
+
+      <div class="grammar-card">
+        <div class="font-bold text-gray-700 mb-2">✅ 有 yǒu — иметь / у кого-то есть</div>
+        <div class="text-sm text-gray-600 mb-1">肯定：我 <b>有</b> 姐姐。— У меня есть старшая сестра.</div>
+        <div class="text-sm text-gray-600 mb-1">否定：我 <b>没有</b> 姐姐。— У меня нет старшей сестры.</div>
+        <div class="text-sm text-gray-600 mb-1">疑问A：你 <b>有</b> 姐姐 <b>吗</b>？— У тебя есть сестра?</div>
+        <div class="text-sm text-gray-600">疑问B：你 <b>有没有</b> 姐姐？— (то же самое, усиленная форма)</div>
+      </div>
+
+      <div class="grammar-card">
+        <div class="font-bold text-gray-700 mb-2">✅ 是 shì — быть / являться</div>
+        <div class="text-sm text-gray-600 mb-1">疑问A：你是俄罗斯人 <b>吗</b>？— Ты россиянин(-ка)?</div>
+        <div class="text-sm text-gray-600">疑问B：你 <b>是不是</b> 俄罗斯人？— (то же самое, усиленная форма)</div>
+      </div>
+
+      <div class="grammar-card">
+        <div class="font-bold text-gray-700 mb-2">✅ 想 xiǎng — два значения</div>
+        <div class="text-sm text-gray-600 mb-1">① 想 + 动词 = хотеть что-то сделать：你想 <b>吃</b> 什么？— Что ты хочешь есть?</div>
+        <div class="text-sm text-gray-600">② 想 + человек = скучать：我很想 <b>你们</b>。— Я очень по вам скучаю.</div>
+      </div>
+
+      <div class="grammar-card">
+        <div class="font-bold text-gray-700 mb-2">✅ 也 yě — тоже (стоит перед глаголом)</div>
+        <div class="text-sm text-gray-600">我喜欢咖啡，我妈妈 <b>也</b> 喜欢咖啡。— Я люблю кофе, мама <b>тоже</b> любит кофе.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="text-center text-gray-400 text-xs mt-4 pb-6">— 课堂复习材料 · 仅供学习使用 —</div>
+</div>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
