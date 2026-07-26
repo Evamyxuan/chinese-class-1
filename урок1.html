@@ -129,6 +129,29 @@
   }
   .grammar-card h4 { font-size: 0.92rem; font-weight: 700; color: #166534; margin-bottom: 6px; }
 
+  /* timer */
+  .timer-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff7ed;
+    border: 1px solid #fde68a;
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-size: 0.82rem;
+    color: #b45309;
+    margin-top: 10px;
+  }
+  .timer-dot {
+    width: 8px; height: 8px;
+    background: #e07b39;
+    border-radius: 50%;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
   /* footer */
   .footer { text-align: center; font-size: 0.75rem; color: #aaa; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; }
 </style>
@@ -140,6 +163,7 @@
     <h1>📚 Урок 1 · 课堂复习材料</h1>
     <div class="subtitle">Учебные материалы для повторения · 2026.07.23</div>
     <div class="hint-badge">👆 Нажми на карточку — увидишь перевод！/ 点击卡片查看翻译</div>
+    <div class="timer-bar"><span class="timer-dot"></span><span id="timer">Время учёбы · 学习时间：0 мин 0 сек</span></div>
   </div>
 
   <!-- ① 称谓 -->
@@ -653,30 +677,17 @@
   </div>
 
   <div class="footer">— 课堂复习材料 · 仅供学习使用 —</div>
+
+<script>
+  var start = Date.now();
+  setInterval(function() {
+    var elapsed = Math.floor((Date.now() - start) / 1000);
+    var min = Math.floor(elapsed / 60);
+    var sec = elapsed % 60;
+    document.getElementById('timer').textContent =
+      'Время учёбы · 学习时间：' + min + ' мин ' + sec + ' сек';
+  }, 1000);
+</script>
 </div>
-<script>window.parent.postMessage({ action: "ready" }, "*"); 
- 
-window.console = new Proxy(console, {
-  get(target, prop) {
-    if (['log', 'warn', 'error'].includes(prop)) {
-      return new Proxy(target[prop], {
-        apply(fn, thisArg, args) {
-          fn.apply(thisArg, args);
-          window.parent.postMessage({ action: 'console', 
-            type: prop, 
-            args: args.map((arg) => {
-              try {
-                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
-              } catch (e) {
-                return arg;
-              }
-            }) 
-          }, '*');
-        }
-      });
-    }
-    return target[prop];
-  }
-});
-</script></body>
+</body>
 </html>
